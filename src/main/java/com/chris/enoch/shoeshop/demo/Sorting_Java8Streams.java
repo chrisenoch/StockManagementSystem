@@ -14,6 +14,8 @@ import com.chris.enoch.shoeshop.LoliShoeShop;
 import com.chris.enoch.shoeshop.entity.Address;
 import com.chris.enoch.shoeshop.entity.Shoe;
 import com.chris.enoch.shoeshop.entity.ShoeType;
+import com.chris.enoch.shoeshop.entity.StockToBeOrdered;
+import com.chris.enoch.shoeshop.entity.StockToBeOrderedShopA;
 import com.chris.enoch.shoeshop.entity.Supplier;
 import com.chris.enoch.shoeshop.exceptions.TooManyTypesOfShoesException;
 import com.chris.enoch.shoeshop.exceptions.TooMuchStockException;
@@ -22,6 +24,9 @@ import static java.util.stream.Collectors.*;
 
 
 public class Sorting_Java8Streams {
+	private static final int MAX_STOCK_CAN_HOLD = 500;
+	private static final int MAX_NUM_OF_SHOE_TYPES = 10;
+
 	public static void main(String[] args) {	
 		LoliShoeShop loliShoeShop = initLoliShoeShoeShop();	
 		List<Shoe> stockList = loliShoeShop.getStockList();
@@ -80,7 +85,7 @@ public class Sorting_Java8Streams {
 	}
 	
 	//in reality, would get this info from database
-	private static LoliShoeShop initLoliShoeShoeShop() { 
+	private static StockToBeOrdered initLoliShoeShoeShop() { 
 		Address nikeAddress = new Address(1, (short)14, "Paul Street", "Harbourne", "Birmingham"
 				, "England", "B62 0GF", "01214507656");
 		Address doctorMartinsAddress = new Address(12, (short)142, "Lavina Road", "Smethick"
@@ -94,19 +99,21 @@ public class Sorting_Java8Streams {
 		Supplier vansSupplier = new Supplier(2, vansAddress);
 		
 		//Init shoes - Improve variable names			
-		Shoe trainer = new Shoe(0, 0, nikeSupplier, ShoeType.RUNNING, 8000);	
-		Shoe flipFlops = new Shoe(1, 1, vansSupplier, ShoeType.BEACH, 5000);
-		Shoe hikingBoots = new Shoe(2, 2, doctorMartinsSupplier, ShoeType.MILITARY, 9000);
-		Shoe nikeAirtrainerShoe = new Shoe(3,  3, nikeSupplier, ShoeType.SNEAKER, 11000);
-		Shoe leatherbootsVans = new Shoe(4,  4, vansSupplier, ShoeType.LEATHER_BOOTS, 1200);
-		Shoe r9s = new Shoe(5,  5, nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000);
-		Shoe balletShoes = new Shoe(5,  5, vansSupplier, ShoeType.DANCING, 8000);
-		Shoe sandals = new Shoe(6,  6, vansSupplier, ShoeType.WEDDING, 20000);
-		Shoe rugbyNike = new Shoe(7,  7, nikeSupplier, ShoeType.RUGBY, 8000);
-		Shoe wellies = new Shoe(8,  8, doctorMartinsSupplier, ShoeType.WELLIES, 5000);
-		Shoe slippers = new Shoe(9,  9, doctorMartinsSupplier, ShoeType.SLIPPERS, 2000);
-
-		LoliShoeShop loliShoeShop = new LoliShoeShop();
+		Shoe trainer = new Shoe(0, 0, "SomeTrainer", nikeSupplier, ShoeType.RUNNING, 8000);	
+		Shoe flipFlops = new Shoe(1, 1, "SomeFlipFlops", vansSupplier, ShoeType.BEACH, 5000);
+		Shoe hikingBoots = new Shoe(2, 2, "SomeHikingBoots", doctorMartinsSupplier, ShoeType.MILITARY, 9000);
+		Shoe nikeAirtrainerShoe = new Shoe(3,  3, "SomeNikeShoe", nikeSupplier, ShoeType.SNEAKER, 11000);
+		Shoe leatherbootsVans = new Shoe(4,  4, "SomeLeatherBootsVans", vansSupplier, ShoeType.LEATHER_BOOTS, 1200);
+		Shoe r9s = new Shoe(5,  5, "SomeR9s", nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000);
+		Shoe sandals = new Shoe(6,  6, "SomeSandals", vansSupplier, ShoeType.WEDDING, 20000);
+		Shoe rugbyNike = new Shoe(7,  7, "SomeNikeRugbyShoes", nikeSupplier, ShoeType.RUGBY, 8000);
+		Shoe wellies = new Shoe(8,  8, "SomeWellies", doctorMartinsSupplier, ShoeType.WELLIES, 5000);
+		Shoe slippers = new Shoe(9,  9, "SomeSlipeprs", doctorMartinsSupplier, ShoeType.SLIPPERS, 2000);
+		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000);
+		
+		List<Shoe> stockToBeOrdererd = new ArrayList<>();
+		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer, 400
+				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		
 		try {
 			loliShoeShop.orderStock(trainer, 50);

@@ -1,5 +1,7 @@
 package com.chris.enoch.shoeshop.demo;
 
+import static com.chris.enoch.shoeshop.entity.StockToBeOrderedUtils.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,9 +13,8 @@ import com.chris.enoch.shoeshop.entity.ShoeType;
 import com.chris.enoch.shoeshop.entity.Stock;
 import com.chris.enoch.shoeshop.entity.StockToBeOrdered;
 import com.chris.enoch.shoeshop.entity.StockToBeOrderedShopA;
+import com.chris.enoch.shoeshop.entity.StockToBeOrderedUtils;
 import com.chris.enoch.shoeshop.entity.Supplier;
-import com.chris.enoch.shoeshop.exceptions.TooManyTypesOfShoesException;
-import com.chris.enoch.shoeshop.exceptions.TooMuchStockException;
 
 public class App2 {
 	public static void main(String[] args) {
@@ -38,38 +39,38 @@ public class App2 {
 		Supplier vansSupplier = new Supplier(2, vansAddress);
 		
 		//Init shoes - Improve variable names			
-		Shoe trainer = new Shoe(0, 0, nikeSupplier, ShoeType.RUNNING, 8000);	
-		Shoe flipFlops = new Shoe(1, 1, vansSupplier, ShoeType.BEACH, 5000);
-		Shoe hikingBoots = new Shoe(2, 2, doctorMartinsSupplier, ShoeType.MILITARY, 9000);
-		Shoe nikeAirtrainerShoe = new Shoe(3,  3, nikeSupplier, ShoeType.SNEAKER, 11000);
-		Shoe leatherbootsVans = new Shoe(4,  4, vansSupplier, ShoeType.LEATHER_BOOTS, 1200);
-		Shoe r9s = new Shoe(5,  5, nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000);
-		Shoe balletShoes = new Shoe(5,  5, vansSupplier, ShoeType.DANCING, 8000);
-		Shoe sandals = new Shoe(6,  6, vansSupplier, ShoeType.WEDDING, 20000);
-		Shoe rugbyNike = new Shoe(7,  7, nikeSupplier, ShoeType.RUGBY, 8000);
-		Shoe wellies = new Shoe(8,  8, doctorMartinsSupplier, ShoeType.WELLIES, 5000);
-		Shoe slippers = new Shoe(9,  9, doctorMartinsSupplier, ShoeType.SLIPPERS, 2000);
+		Shoe trainer = new Shoe(0, 0, "SomeTrainer", nikeSupplier, ShoeType.RUNNING, 8000);	
+		Shoe flipFlops = new Shoe(1, 1, "SomeFlipFlops", vansSupplier, ShoeType.BEACH, 5000);
+		Shoe hikingBoots = new Shoe(2, 2, "SomeHikingBoots", doctorMartinsSupplier, ShoeType.MILITARY, 9000);
+		Shoe nikeAirtrainerShoe = new Shoe(3,  3, "SomeNikeShoe", nikeSupplier, ShoeType.SNEAKER, 11000);
+		Shoe leatherbootsVans = new Shoe(4,  4, "SomeLeatherBootsVans", vansSupplier, ShoeType.LEATHER_BOOTS, 1200);
+		Shoe r9s = new Shoe(5,  5, "SomeR9s", nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000);
+		Shoe sandals = new Shoe(6,  6, "SomeSandals", vansSupplier, ShoeType.WEDDING, 20000);
+		Shoe rugbyNike = new Shoe(7,  7, "SomeNikeRugbyShoes", nikeSupplier, ShoeType.RUGBY, 8000);
+		Shoe wellies = new Shoe(8,  8, "SomeWellies", doctorMartinsSupplier, ShoeType.WELLIES, 5000);
+		Shoe slippers = new Shoe(9,  9, "SomeSlipeprs", doctorMartinsSupplier, ShoeType.SLIPPERS, 2000);
+		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000);
 
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
 		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer, 400
 				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		 
-		System.out.println(feedback(stockToBeOrdered, trainer, 400));
-		System.out.println(feedback(stockToBeOrdered, trainer, 120)); //Should fail
-		System.out.println(feedback(stockToBeOrdered, flipFlops, 1));
-		System.out.println(feedback(stockToBeOrdered, hikingBoots, 2));
-		System.out.println(feedback(stockToBeOrdered, nikeAirtrainerShoe, 3));
-		System.out.println(feedback(stockToBeOrdered, leatherbootsVans, 3));
-		System.out.println(feedback(stockToBeOrdered, r9s, 4));
-		System.out.println(feedback(stockToBeOrdered, balletShoes, 5));
-		System.out.println(feedback(stockToBeOrdered, sandals, 6));
-		System.out.println(feedback(stockToBeOrdered, rugbyNike, 7));
-		System.out.println(feedback(stockToBeOrdered, wellies, 2));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 400));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 120)); //Should fail
+		System.out.println(addAndGetFeedback(stockToBeOrdered, flipFlops, 1));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, hikingBoots, 2));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, nikeAirtrainerShoe, 3));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, leatherbootsVans, 3));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, r9s, 4));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, balletShoes, 5));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, sandals, 6));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, rugbyNike, 7));
+		System.out.println(addAndGetFeedback(stockToBeOrdered, wellies, 2));
 		
 		//Next oen should fail
 		System.out.println("Lets see " + stockToBeOrdered.getStockToBeOrdered().size());
 		System.out.println("Next one should fail.");	
-		System.out.println(feedback(stockToBeOrdered, slippers, 2)); //Not working
+		System.out.println(addAndGetFeedback(stockToBeOrdered, slippers, 2)); //Not working
 		
 		
 		System.out.println("Lets see " + stockToBeOrdered.getStockToBeOrdered().size());
@@ -136,19 +137,6 @@ public class App2 {
 //		System.out.println("Should be 408: " + loliShoeShop.getStockList().size()); //Should be 408
 //		
 
-	}
-	
-	private static String feedback(StockToBeOrdered stockToBeOrdered, Shoe shoeToOrder, int numberPairsShoesToOrder) {
-		stockToBeOrdered.setShoeToOrder(shoeToOrder);
-		stockToBeOrdered.setNumberPairsShoesToOrder(numberPairsShoesToOrder);
-		OrderStockFeedback oF = stockToBeOrdered.addStockToBeOrdered();
-		
-		if (!oF.isStockOrderSuccesful()) {
-			return oF.getErrorMessages().stream().collect(Collectors.joining(", "));
-		} else {
-			return "Successfully added " + numberPairsShoesToOrder +" pairs of " + shoeToOrder;
-		}
-	
 	}
 
 }

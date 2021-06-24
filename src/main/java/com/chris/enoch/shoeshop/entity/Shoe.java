@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Shoe {
 	private int id;  //to uniquely identify in database
+	private String name;
 	private long productId;
 	private Supplier supplier;
 	private ShoeType shoeType;
@@ -49,9 +50,20 @@ public class Shoe {
 		this.priceInCents = priceInCents;
 	}
 
-	public Shoe(int id, long productId, Supplier supplier, ShoeType shoeType, int priceInCents) {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public Shoe(int id, long productId,  String name, Supplier supplier, ShoeType shoeType, int priceInCents) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.productId = productId;
 		this.supplier = supplier;
 		this.shoeType = shoeType;
