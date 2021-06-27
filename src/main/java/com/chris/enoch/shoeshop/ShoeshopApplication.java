@@ -5,10 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.chris.enoch.shoeshop.dao.ShoeRepository;
-
-
-
 @SpringBootApplication
 public class ShoeshopApplication {
 
@@ -16,11 +12,5 @@ public class ShoeshopApplication {
 		SpringApplication.run(ShoeshopApplication.class, args);
 	}
 	
-//	@Bean
-//	public CommandLineRunner data(ShoeRepository repo) {
-//		return (args) -> {
-//			repo.insert();
-//		};
-//	}
 
 }

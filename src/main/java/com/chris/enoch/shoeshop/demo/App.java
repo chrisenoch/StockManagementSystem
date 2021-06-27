@@ -15,6 +15,7 @@ import com.chris.enoch.shoeshop.entity.Supplier;
 
 public class App {
 	public static void main(String[] args) {
+		
 		//Init Stock
 		Stock stock = new Stock(new ArrayList<>());
 		
