@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `colour_item_group`
+-- Table structure for table `stock_to_be_ordered`
 --
 
-DROP TABLE IF EXISTS `colour_item_group`;
+DROP TABLE IF EXISTS `stock_to_be_ordered`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `colour_item_group` (
-  `colour_id` int NOT NULL,
-  `item_group_id` int NOT NULL,
-  PRIMARY KEY (`colour_id`,`item_group_id`),
-  KEY `bbbb_idx` (`item_group_id`),
-  CONSTRAINT `FK_COLOUR_ITEM_GROUP---COLOUR` FOREIGN KEY (`colour_id`) REFERENCES `colour` (`id`),
-  CONSTRAINT `FK_COLOUR_ITEM_GROUP---ITEM_GROUP` FOREIGN KEY (`item_group_id`) REFERENCES `item_group` (`item_group_id`)
+CREATE TABLE `stock_to_be_ordered` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `shop_id` int NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_ordered` datetime DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `product_id_ref` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_STOCKTOBEORDERED_SHOP_idx` (`shop_id`),
+  KEY `FK__idx` (`product_id_ref`),
+  CONSTRAINT `FK_STOCK_TO_BE_ORDERED---SHOE` FOREIGN KEY (`product_id_ref`) REFERENCES `shoe` (`product_id`),
+  CONSTRAINT `FK_STOCK_TO_BE_ORDERED---SHOP` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `colour_item_group`
+-- Dumping data for table `stock_to_be_ordered`
 --
 
-LOCK TABLES `colour_item_group` WRITE;
-/*!40000 ALTER TABLE `colour_item_group` DISABLE KEYS */;
-INSERT INTO `colour_item_group` VALUES (1,1),(2,1),(3,1),(7,1),(1,2),(2,2),(3,2),(7,2),(1,3),(3,3),(7,3),(1,4),(2,4),(3,4),(5,4),(7,4),(1,5),(2,5),(3,5),(5,5),(7,5),(2,6),(4,6),(5,6),(7,6),(2,7),(4,7),(5,7),(7,7),(4,8),(5,8),(7,8),(4,9),(5,9),(7,9),(4,10),(5,10);
-/*!40000 ALTER TABLE `colour_item_group` ENABLE KEYS */;
+LOCK TABLES `stock_to_be_ordered` WRITE;
+/*!40000 ALTER TABLE `stock_to_be_ordered` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stock_to_be_ordered` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-27 13:39:56
+-- Dump completed on 2021-06-27 14:32:20

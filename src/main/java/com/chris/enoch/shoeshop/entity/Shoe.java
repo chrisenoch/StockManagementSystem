@@ -9,6 +9,10 @@ public class Shoe {
 	private Supplier supplier;
 	private ShoeType shoeType;
 	private int priceInCents;
+	private GenderAdultChild genderAdultChild;
+	private int itemGroupRef;
+	private Colour colour;
+	private int size;
 
 	public int getId() {
 		return id;
@@ -58,9 +62,41 @@ public class Shoe {
 		this.name = name;
 	}
 
+	public GenderAdultChild getGenderAdultChild() {
+		return genderAdultChild;
+	}
 
+	public void setGenderAdultChild(GenderAdultChild genderAdultChild) {
+		this.genderAdultChild = genderAdultChild;
+	}
 
-	public Shoe(int id, long productId,  String name, Supplier supplier, ShoeType shoeType, int priceInCents) {
+	public int getItemGroupRef() {
+		return itemGroupRef;
+	}
+
+	public void setItemGroupRef(int itemGroupRef) {
+		this.itemGroupRef = itemGroupRef;
+	}
+
+	public Colour getColour() {
+		return colour;
+	}
+
+	public void setColour(Colour colour) {
+		this.colour = colour;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+	
+	
+	public Shoe(int id, long productId, String name, Supplier supplier, ShoeType shoeType, int priceInCents,
+			GenderAdultChild genderAdultChild, int itemGroupRef, Colour colour, int size) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,6 +104,10 @@ public class Shoe {
 		this.supplier = supplier;
 		this.shoeType = shoeType;
 		this.priceInCents = priceInCents;
+		this.genderAdultChild = genderAdultChild;
+		this.itemGroupRef = itemGroupRef;
+		this.colour = colour;
+		this.size = size;
 	}
 
 	@Override

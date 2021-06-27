@@ -16,34 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `stock_to_be_ordered`
+-- Table structure for table `supplier_address`
 --
 
-DROP TABLE IF EXISTS `stock_to_be_ordered`;
+DROP TABLE IF EXISTS `supplier_address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stock_to_be_ordered` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `shop_id` int NOT NULL,
-  `date_added` datetime NOT NULL,
-  `date_ordered` datetime DEFAULT NULL,
-  `quantity` int NOT NULL,
-  `product_id_ref` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_STOCKTOBEORDERED_SHOP_idx` (`shop_id`),
-  KEY `FK__idx` (`product_id_ref`),
-  CONSTRAINT `FK_STOCK_TO_BE_ORDERED---SHOE` FOREIGN KEY (`product_id_ref`) REFERENCES `shoe` (`product_id`),
-  CONSTRAINT `FK_STOCK_TO_BE_ORDERED---SHOP` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`id`)
+CREATE TABLE `supplier_address` (
+  `supplier_id` int NOT NULL,
+  `address_id` int NOT NULL,
+  PRIMARY KEY (`supplier_id`,`address_id`),
+  KEY `FK_SUPPLIER_ADDRESS_ADDRESS_idx` (`address_id`),
+  CONSTRAINT `FK_SUPPLIER_ADDRESS---ADDRESS` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
+  CONSTRAINT `FK_SUPPLIER_ADDRESS---SUPPLIER` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `stock_to_be_ordered`
+-- Dumping data for table `supplier_address`
 --
 
-LOCK TABLES `stock_to_be_ordered` WRITE;
-/*!40000 ALTER TABLE `stock_to_be_ordered` DISABLE KEYS */;
-/*!40000 ALTER TABLE `stock_to_be_ordered` ENABLE KEYS */;
+LOCK TABLES `supplier_address` WRITE;
+/*!40000 ALTER TABLE `supplier_address` DISABLE KEYS */;
+INSERT INTO `supplier_address` VALUES (1,1),(2,2),(3,3);
+/*!40000 ALTER TABLE `supplier_address` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-27 13:39:56
+-- Dump completed on 2021-06-27 14:32:20

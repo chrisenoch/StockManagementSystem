@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.chris.enoch.shoeshop.entity.Address;
+import com.chris.enoch.shoeshop.entity.Colour;
+import com.chris.enoch.shoeshop.entity.GenderAdultChild;
 import com.chris.enoch.shoeshop.entity.Shoe;
 import com.chris.enoch.shoeshop.entity.ShoeType;
 import com.chris.enoch.shoeshop.entity.Stock;
@@ -20,6 +22,8 @@ import com.chris.enoch.shoeshop.entity.StockToBeOrderedShopA;
 import com.chris.enoch.shoeshop.entity.Supplier;
 
 import static java.util.stream.Collectors.*;
+
+import java.time.LocalDateTime;
 
 
 public class Sorting_Java8Streams {
@@ -101,21 +105,22 @@ public class Sorting_Java8Streams {
 		Supplier vansSupplier = new Supplier(2, vansAddress);
 		
 		//Init shoes - Improve variable names			
-		Shoe trainer = new Shoe(0, 0, "SomeTrainer", nikeSupplier, ShoeType.RUNNING, 8000);	
-		Shoe flipFlops = new Shoe(1, 1, "SomeFlipFlops", vansSupplier, ShoeType.BEACH, 5000);
-		Shoe hikingBoots = new Shoe(2, 2, "SomeHikingBoots", doctorMartinsSupplier, ShoeType.MILITARY, 9000);
-		Shoe nikeAirtrainerShoe = new Shoe(3,  3, "SomeNikeShoe", nikeSupplier, ShoeType.SNEAKER, 11000);
-		Shoe leatherbootsVans = new Shoe(4,  4, "SomeLeatherBootsVans", vansSupplier, ShoeType.LEATHER_BOOTS, 1200);
-		Shoe r9s = new Shoe(5,  5, "SomeR9s", nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000);
-		Shoe sandals = new Shoe(6,  6, "SomeSandals", vansSupplier, ShoeType.WEDDING, 20000);
-		Shoe rugbyNike = new Shoe(7,  7, "SomeNikeRugbyShoes", nikeSupplier, ShoeType.RUGBY, 8000);
-		Shoe wellies = new Shoe(8,  8, "SomeWellies", doctorMartinsSupplier, ShoeType.WELLIES, 5000);
-		Shoe slippers = new Shoe(9,  9, "SomeSlipeprs", doctorMartinsSupplier, ShoeType.SLIPPERS, 2000);
-		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000);
+		//Init shoes - Improve variable names			
+		Shoe trainer = new Shoe(0, 0, "SomeTrainer", nikeSupplier, ShoeType.RUNNING, 8000, GenderAdultChild.MALE, 1, Colour.BLACK, 40);	
+		Shoe flipFlops = new Shoe(1, 1, "SomeFlipFlops", vansSupplier, ShoeType.BEACH, 5000, GenderAdultChild.FEMALE, 2, Colour.BLACK, 40);
+		Shoe hikingBoots = new Shoe(2, 2, "SomeHikingBoots", doctorMartinsSupplier, ShoeType.MILITARY, 9000, GenderAdultChild.MALE, 2, Colour.WHITE, 42);
+		Shoe nikeAirtrainerShoe = new Shoe(3,  3, "SomeNikeShoe", nikeSupplier, ShoeType.SNEAKER, 11000, GenderAdultChild.MALE, 3, Colour.BLACK, 40);
+		Shoe leatherbootsVans = new Shoe(4,  4, "SomeLeatherBootsVans", vansSupplier, ShoeType.LEATHER_BOOTS, 1200, GenderAdultChild.FEMALE, 4, Colour.BLACK, 46);
+		Shoe r9s = new Shoe(5,  5, "SomeR9s", nikeSupplier, ShoeType.FOOTBALL_BOOTS, 15000, GenderAdultChild.MALE, 5, Colour.RED, 39);
+		Shoe sandals = new Shoe(6,  6, "SomeSandals", vansSupplier, ShoeType.WEDDING, 20000, GenderAdultChild.FEMALE, 1, Colour.WHITE, 40);
+		Shoe rugbyNike = new Shoe(7,  7, "SomeNikeRugbyShoes", nikeSupplier, ShoeType.RUGBY, 8000, GenderAdultChild.MALE, 1, Colour.BLACK, 40);
+		Shoe wellies = new Shoe(8,  8, "SomeWellies", doctorMartinsSupplier, ShoeType.WELLIES, 5000, GenderAdultChild.MALE, 1, Colour.BLACK, 40);
+		Shoe slippers = new Shoe(9,  9, "SomeSlipeprs", doctorMartinsSupplier, ShoeType.SLIPPERS, 2000, GenderAdultChild.MALE, 1, Colour.BLACK, 40);
+		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000, GenderAdultChild.FEMALE, 1, Colour.BLACK, 38);
 		
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
 		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer, 400
-				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
+				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES, LocalDateTime.now());
 		
 		
 		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 50));

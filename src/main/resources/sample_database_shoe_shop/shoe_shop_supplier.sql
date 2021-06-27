@@ -16,26 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `item_group`
+-- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `item_group`;
+DROP TABLE IF EXISTS `supplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `item_group` (
-  `item_group_id` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`item_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+CREATE TABLE `supplier` (
+  `id` int NOT NULL,
+  `company_name` varchar(90) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `company_name_UNIQUE` (`company_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item_group`
+-- Dumping data for table `supplier`
 --
 
-LOCK TABLES `item_group` WRITE;
-/*!40000 ALTER TABLE `item_group` DISABLE KEYS */;
-INSERT INTO `item_group` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11);
-/*!40000 ALTER TABLE `item_group` ENABLE KEYS */;
+LOCK TABLES `supplier` WRITE;
+/*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES (3,'Doctor Martins'),(1,'Nike'),(2,'Vans');
+/*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-27 13:39:55
+-- Dump completed on 2021-06-27 14:32:20

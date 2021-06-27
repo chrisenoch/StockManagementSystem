@@ -16,27 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `shop`
+-- Table structure for table `item_group`
 --
 
-DROP TABLE IF EXISTS `shop`;
+DROP TABLE IF EXISTS `item_group`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shop` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `item_group` (
+  `item_group_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`item_group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop`
+-- Dumping data for table `item_group`
 --
 
-LOCK TABLES `shop` WRITE;
-/*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'Shoezzie'),(2,'Elegant Shoes');
-/*!40000 ALTER TABLE `shop` ENABLE KEYS */;
+LOCK TABLES `item_group` WRITE;
+/*!40000 ALTER TABLE `item_group` DISABLE KEYS */;
+INSERT INTO `item_group` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11);
+/*!40000 ALTER TABLE `item_group` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-27 13:39:55
+-- Dump completed on 2021-06-27 14:32:20

@@ -16,30 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `supplier_address`
+-- Table structure for table `size`
 --
 
-DROP TABLE IF EXISTS `supplier_address`;
+DROP TABLE IF EXISTS `size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `supplier_address` (
-  `supplier_id` int NOT NULL,
-  `address_id` int NOT NULL,
-  PRIMARY KEY (`supplier_id`,`address_id`),
-  KEY `FK_SUPPLIER_ADDRESS_ADDRESS_idx` (`address_id`),
-  CONSTRAINT `FK_SUPPLIER_ADDRESS---ADDRESS` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
-  CONSTRAINT `FK_SUPPLIER_ADDRESS---SUPPLIER` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `size` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `size` decimal(3,1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `size_UNIQUE` (`size`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `supplier_address`
+-- Dumping data for table `size`
 --
 
-LOCK TABLES `supplier_address` WRITE;
-/*!40000 ALTER TABLE `supplier_address` DISABLE KEYS */;
-INSERT INTO `supplier_address` VALUES (1,1),(2,2),(3,3);
-/*!40000 ALTER TABLE `supplier_address` ENABLE KEYS */;
+LOCK TABLES `size` WRITE;
+/*!40000 ALTER TABLE `size` DISABLE KEYS */;
+INSERT INTO `size` VALUES (1,36.0),(2,37.0),(3,38.0),(4,39.0),(5,40.0),(6,41.0),(7,42.0),(8,43.0),(9,44.0),(10,45.0),(11,46.0);
+/*!40000 ALTER TABLE `size` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-27 13:39:55
+-- Dump completed on 2021-06-27 14:32:20

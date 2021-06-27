@@ -1,9 +1,11 @@
 package com.chris.enoch.shoeshop.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,13 +17,27 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 	private Stock stock;
 	private int maxStockWeCanHold;
 	private int maxNumOfShoeTypes;
-
+	private LocalDateTime dateAdded;
+	private Optional<LocalDateTime> dateOrdered;
+	
 	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, Stock stock, Shoe shoeToOrder, int numberPairsShoesToOrder,
-			 int maxStockWeCanHold, int maxNumOfShoeTypes) {
+			 int maxStockWeCanHold, int maxNumOfShoeTypes, LocalDateTime dateAdded,
+			Optional<LocalDateTime> dateOrdered) {
 		super(stockToBeOrdered, shoeToOrder, numberPairsShoesToOrder);
 		this.stock = stock;
 		this.maxStockWeCanHold = maxStockWeCanHold;
 		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
+		this.dateAdded = dateAdded;
+		this.dateOrdered = dateOrdered;
+	}
+	
+	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, Stock stock, Shoe shoeToOrder, int numberPairsShoesToOrder,
+			 int maxStockWeCanHold, int maxNumOfShoeTypes, LocalDateTime dateAdded) {
+		super(stockToBeOrdered, shoeToOrder, numberPairsShoesToOrder);
+		this.stock = stock;
+		this.maxStockWeCanHold = maxStockWeCanHold;
+		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
+		this.dateAdded = dateAdded;
 	}
 
 	public Stock getStock() {
@@ -65,6 +81,21 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 	}
 
 
+	public LocalDateTime getDateAdded() {
+		return dateAdded;
+	}
+
+	public void setDateAdded(LocalDateTime dateAdded) {
+		this.dateAdded = dateAdded;
+	}
+
+	public Optional<LocalDateTime> getDateOrdered() {
+		return dateOrdered;
+	}
+
+	public void setDateOrdered(Optional<LocalDateTime> dateOrdered) {
+		this.dateOrdered = dateOrdered;
+	}
 
 	@Override
 	protected OrderStockFeedback checkStockToBeOrdered() {
