@@ -8,7 +8,7 @@ Skills demonstrated in this project:
 
 
 
-•	SQL Queries
+•	SQL 
 
     o	Joins
     o	Multiple joins
