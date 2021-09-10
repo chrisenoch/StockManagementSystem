@@ -1,5 +1,9 @@
 package com.chris.enoch.shoeshop.demo;
-
+/**
+ * A class to show my skills in SQL.
+ * @author chris
+ *
+ */
 public class SQLDemo {
 	
 	/* MySQL Demo

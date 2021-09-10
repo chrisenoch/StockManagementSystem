@@ -25,7 +25,9 @@ import static java.util.stream.Collectors.*;
 
 import java.time.LocalDateTime;
 
-
+/*
+ * A class to show my ability at using Java 8
+ */
 public class Sorting_Java8Streams {
 	private static final int MAX_STOCK_CAN_HOLD = 500;
 	private static final int MAX_NUM_OF_SHOE_TYPES = 10;

@@ -101,14 +101,7 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 			//Add to OrderStockFeedback
 			orderStockFeedback.setErrorMessages(errors);
 			
-		}
-//		} else {
-//			
-//			//Add to stockToBeOrdered list - For now overwrite existing values. Later change so warns user that there is already shoes of this type scheduled to be ordered.
-//			stockToBeOrdered.put(shoeToOrder, numberPairsShoesToOrder);	
-//			
-//		}
-//		
+		}	
 		return orderStockFeedback;
 	}
 
@@ -155,13 +148,12 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 		}
 		
 		Set<ShoeType> numOfShoeTypes = new HashSet<>();
-		
 		for (int i = 1; i < tempShoes.size();i ++) { //start iterating from second in the list
 				numOfShoeTypes.add(tempShoes.get(i).getShoeType());
 				
 				if (numOfShoeTypes.size() > maxNumOfShoeTypes) {
 					orderStockFeedback.setStockOrderSuccesful(false);
-					
+					break;				
 				}			
 		}	
 		

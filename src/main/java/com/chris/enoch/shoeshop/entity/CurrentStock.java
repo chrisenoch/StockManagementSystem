@@ -20,10 +20,18 @@ public class CurrentStock {
 		this.stockList = stockList;
 	}
 
+	/**
+	 * A method to reduce the current stock according to a customer order request.
+	 * @param shoe
+	 * @param amountRequested
+	 * @return the amount of stock requested if successful. If not, an Exception is thrown.
+	 * @throws Exception - this details the reason the operation was unsuccessful. E.g. because the customer has ordered more
+	 * items than are available or because the shop is out of stock.
+	 */
 	public int reduceStock(Shoe shoe, int amountRequested) throws Exception {
 		checkReduceStock(shoe, amountRequested);
 		
-		//This will be changed to call a dao method.
+		//This will be changed to call a DAO method.
 		for (int i = 0; i < amountRequested; i++ ) {
 			stockList.remove(shoe);
 		}	
@@ -32,10 +40,8 @@ public class CurrentStock {
 	
 	private void checkReduceStock(Shoe shoe, int amountRequested) throws Exception {
 		//CHECK IF IN STOCK
-			//tempList so do not modify list in object
-		List<Shoe> tempList = new ArrayList<>(stockList); //all types of shoes
-		//get just type of shoes customer wants
-		List<Shoe> shoesSelectedByCustomer = tempList.stream()
+		//get just type of shoes the customer wants
+		List<Shoe> shoesSelectedByCustomer = stockList.stream()
 				.filter(s -> s.equals(shoe)).collect(Collectors.toList());
 			
 		if (shoesSelectedByCustomer.size() == 0) {
