@@ -14,19 +14,15 @@ import com.chris.enoch.shoeshop.exceptions.TooMuchStockException;
 
 public class StockToBeOrderedShopA extends StockToBeOrdered{
 	
-	private CurrentStock currentStock;
 	private int maxStockWeCanHold;
 	private int maxNumOfShoeTypes;
-	private LocalDateTime dateAdded;
 	
-
+	
 	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, CurrentStock currentStock, Shoe shoeToOrder,
 			LocalDateTime dateAdded, int maxStockWeCanHold, int maxNumOfShoeTypes) {
-		super(stockToBeOrdered, shoeToOrder);
-		this.currentStock = currentStock;
+		super(stockToBeOrdered, shoeToOrder, currentStock, dateAdded);
 		this.maxStockWeCanHold = maxStockWeCanHold;
 		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
-		this.dateAdded = dateAdded;
 	}
 
 	public CurrentStock getStock() {

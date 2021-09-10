@@ -1,4 +1,5 @@
 package com.chris.enoch.shoeshop.entity;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +10,15 @@ public abstract class StockToBeOrdered {
 	protected List<Shoe> stockToBeOrdered = new ArrayList<>();
 	protected Shoe shoeToOrder;
 	protected int numberPairsShoesToOrder;
+	protected CurrentStock currentStock;
+	protected LocalDateTime dateAdded;
 
-	public StockToBeOrdered(List<Shoe> stockToBeOrdered, Shoe shoeToOrder) {
+	public StockToBeOrdered(List<Shoe> stockToBeOrdered, Shoe shoeToOrder, CurrentStock currentStock, LocalDateTime dateAdded) {
 		super();
 		this.stockToBeOrdered = stockToBeOrdered;
 		this.shoeToOrder = shoeToOrder;
+		this.currentStock = currentStock;
+		this.dateAdded = dateAdded;
 	
 	}
 
@@ -39,6 +44,22 @@ public abstract class StockToBeOrdered {
 
 	public void setNumberPairsShoesToOrder(int numberPairsShoesToOrder) {
 		this.numberPairsShoesToOrder = numberPairsShoesToOrder;
+	}
+
+	public CurrentStock getCurrentStock() {
+		return currentStock;
+	}
+
+	public void setCurrentStock(CurrentStock currentStock) {
+		this.currentStock = currentStock;
+	}
+
+	public LocalDateTime getDateAdded() {
+		return dateAdded;
+	}
+
+	public void setDateAdded(LocalDateTime dateAdded) {
+		this.dateAdded = dateAdded;
 	}
 
 	/**
