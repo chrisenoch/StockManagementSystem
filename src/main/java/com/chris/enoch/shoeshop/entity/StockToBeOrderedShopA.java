@@ -12,15 +12,13 @@ import java.util.stream.Collectors;
 import com.chris.enoch.shoeshop.exceptions.TooManyTypesOfShoesException;
 import com.chris.enoch.shoeshop.exceptions.TooMuchStockException;
 
-public class StockToBeOrderedShopA extends StockToBeOrdered{
-	
+public class StockToBeOrderedShopA extends StockToBeOrdered{	
 	private int maxStockWeCanHold;
 	private int maxNumOfShoeTypes;
 	
-	
-	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, CurrentStock currentStock, Shoe shoeToOrder,
+	public StockToBeOrderedShopA(CurrentStock currentStock, Shoe shoeToOrder,
 			LocalDateTime dateAdded, int maxStockWeCanHold, int maxNumOfShoeTypes) {
-		super(stockToBeOrdered, shoeToOrder, currentStock, dateAdded);
+		super(shoeToOrder, currentStock, dateAdded);
 		this.maxStockWeCanHold = maxStockWeCanHold;
 		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
 	}

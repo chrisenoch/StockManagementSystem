@@ -13,9 +13,8 @@ public abstract class StockToBeOrdered {
 	protected CurrentStock currentStock;
 	protected LocalDateTime dateAdded;
 
-	public StockToBeOrdered(List<Shoe> stockToBeOrdered, Shoe shoeToOrder, CurrentStock currentStock, LocalDateTime dateAdded) {
+	public StockToBeOrdered(Shoe shoeToOrder, CurrentStock currentStock, LocalDateTime dateAdded) {
 		super();
-		this.stockToBeOrdered = stockToBeOrdered;
 		this.shoeToOrder = shoeToOrder;
 		this.currentStock = currentStock;
 		this.dateAdded = dateAdded;

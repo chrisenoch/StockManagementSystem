@@ -31,7 +31,7 @@ import java.time.LocalDateTime;
 public class Sorting_Java8Streams {
 	private static final int MAX_STOCK_CAN_HOLD = 500;
 	private static final int MAX_NUM_OF_SHOE_TYPES = 10;
-	private static CurrentStock stock = new CurrentStock(new ArrayList<>());
+	private static CurrentStock currentStock = new CurrentStock(new ArrayList<>());
 
 	public static void main(String[] args) {	
 		//Init Stock				
@@ -121,7 +121,7 @@ public class Sorting_Java8Streams {
 		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000, GenderAdultChild.FEMALE, 1, Colour.BLACK, 38);
 		
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
-		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer
+		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (currentStock, trainer
 				,LocalDateTime.now(), MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		
 		

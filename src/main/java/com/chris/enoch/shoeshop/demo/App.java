@@ -52,7 +52,7 @@ public class App {
 		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000, GenderAdultChild.FEMALE, 1, Colour.BLACK, 38);
 
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
-		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, currentStock, trainer
+		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA ( currentStock, trainer
 				,LocalDateTime.now(), MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		 
 		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 400));
