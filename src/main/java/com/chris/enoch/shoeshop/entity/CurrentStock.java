@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Stock {
+public class CurrentStock {
 	List<Shoe> stockList;
 	
-	public Stock(List<Shoe> stockList) {
+	public CurrentStock(List<Shoe> stockList) {
 		super();
 		this.stockList = stockList;
 	}

@@ -7,11 +7,11 @@ public abstract class StockToBeOrdered {
 	protected Shoe shoeToOrder;
 	protected int numberPairsShoesToOrder;
 
-	public StockToBeOrdered(List<Shoe> stockToBeOrdered, Shoe shoeToOrder, int numberPairsShoesToOrder) {
+	public StockToBeOrdered(List<Shoe> stockToBeOrdered, Shoe shoeToOrder) {
 		super();
 		this.stockToBeOrdered = stockToBeOrdered;
 		this.shoeToOrder = shoeToOrder;
-		this.numberPairsShoesToOrder = numberPairsShoesToOrder;
+	
 	}
 
 	public List<Shoe> getStockToBeOrdered() {

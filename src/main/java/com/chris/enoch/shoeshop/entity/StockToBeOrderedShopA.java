@@ -14,38 +14,27 @@ import com.chris.enoch.shoeshop.exceptions.TooMuchStockException;
 
 public class StockToBeOrderedShopA extends StockToBeOrdered{
 	
-	private Stock stock;
+	private CurrentStock currentStock;
 	private int maxStockWeCanHold;
 	private int maxNumOfShoeTypes;
 	private LocalDateTime dateAdded;
-	private Optional<LocalDateTime> dateOrdered;
 	
-	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, Stock stock, Shoe shoeToOrder, int numberPairsShoesToOrder,
-			 int maxStockWeCanHold, int maxNumOfShoeTypes, LocalDateTime dateAdded,
-			Optional<LocalDateTime> dateOrdered) {
-		super(stockToBeOrdered, shoeToOrder, numberPairsShoesToOrder);
-		this.stock = stock;
-		this.maxStockWeCanHold = maxStockWeCanHold;
-		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
-		this.dateAdded = dateAdded;
-		this.dateOrdered = dateOrdered;
-	}
-	
-	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, Stock stock, Shoe shoeToOrder, int numberPairsShoesToOrder,
-			 int maxStockWeCanHold, int maxNumOfShoeTypes, LocalDateTime dateAdded) {
-		super(stockToBeOrdered, shoeToOrder, numberPairsShoesToOrder);
-		this.stock = stock;
+
+	public StockToBeOrderedShopA(List<Shoe> stockToBeOrdered, CurrentStock currentStock, Shoe shoeToOrder,
+			LocalDateTime dateAdded, int maxStockWeCanHold, int maxNumOfShoeTypes) {
+		super(stockToBeOrdered, shoeToOrder);
+		this.currentStock = currentStock;
 		this.maxStockWeCanHold = maxStockWeCanHold;
 		this.maxNumOfShoeTypes = maxNumOfShoeTypes;
 		this.dateAdded = dateAdded;
 	}
 
-	public Stock getStock() {
-		return stock;
+	public CurrentStock getStock() {
+		return currentStock;
 	}
 
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setStock(CurrentStock stock) {
+		this.currentStock = stock;
 	}
 
 	public Shoe getShoeToOrder() {
@@ -89,34 +78,26 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 		this.dateAdded = dateAdded;
 	}
 
-	public Optional<LocalDateTime> getDateOrdered() {
-		return dateOrdered;
-	}
-
-	public void setDateOrdered(Optional<LocalDateTime> dateOrdered) {
-		this.dateOrdered = dateOrdered;
-	}
-
 	@Override
 	protected OrderStockFeedback checkStockToBeOrdered() {
 		OrderStockFeedback orderStockFeedback = new OrderStockFeedback(new ArrayList<>(), true);
 		List<String> errors = new ArrayList<>();
 		
-		OrderStockFeedback checkStockOrderNotTooHigh = checkStockOrderNotTooHigh();
-		OrderStockFeedback maxShoeTypes = checkMaxNumOfShoeTypes();
+		OrderStockFeedback feedbackCheckStockOrderNotTooHigh = checkStockOrderNotTooHigh();
+		OrderStockFeedback feedbackMaxShoeTypes = checkMaxNumOfShoeTypes();
 		
 		//Set as false if checkStockOrderNotTooHigh# or maxShoeTypes# failed.
-		if (!checkStockOrderNotTooHigh.isStockOrderSuccesful()) {
+		if (!feedbackCheckStockOrderNotTooHigh.isStockOrderSuccesful()) {
 			orderStockFeedback .setStockOrderSuccesful(false);
 		}
-		if (!maxShoeTypes.isStockOrderSuccesful()) {
+		if (!feedbackMaxShoeTypes.isStockOrderSuccesful()) {
 			orderStockFeedback .setStockOrderSuccesful(false);
 		}
 		
 		if (!orderStockFeedback.isStockOrderSuccesful()) {
 			//Set error messages
-			errors.addAll(checkStockOrderNotTooHigh.getErrorMessages());
-			errors.addAll(maxShoeTypes.getErrorMessages());
+			errors.addAll(feedbackCheckStockOrderNotTooHigh.getErrorMessages());
+			errors.addAll(feedbackMaxShoeTypes.getErrorMessages());
 			//Add to OrderStockFeedback
 			orderStockFeedback.setErrorMessages(errors);
 			
@@ -137,7 +118,7 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 		List<String> errors = new ArrayList<>();
 		
 		//create temp list so object references do not modify original stockList
-		List<Shoe> tempShoes = new ArrayList<>(stock.getStockList());
+		List<Shoe> tempShoes = new ArrayList<>(currentStock.getStockList());
 		for (int i = 0; i < numberPairsShoesToOrder; i++) {
 			tempShoes.add(shoeToOrder);
 		}
@@ -161,7 +142,7 @@ public class StockToBeOrderedShopA extends StockToBeOrdered{
 		List<String> errors = new ArrayList<>();
 
 		//create temp list so object references do not modify original stockList
-		List<Shoe> tempShoes = new ArrayList<>(stock.getStockList());
+		List<Shoe> tempShoes = new ArrayList<>(currentStock.getStockList());
 		for (int i = 0; i < numberPairsShoesToOrder; i++) {
 			tempShoes.add(shoeToOrder);
 		}

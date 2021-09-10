@@ -16,7 +16,7 @@ import com.chris.enoch.shoeshop.entity.Colour;
 import com.chris.enoch.shoeshop.entity.GenderAdultChild;
 import com.chris.enoch.shoeshop.entity.Shoe;
 import com.chris.enoch.shoeshop.entity.ShoeType;
-import com.chris.enoch.shoeshop.entity.Stock;
+import com.chris.enoch.shoeshop.entity.CurrentStock;
 import com.chris.enoch.shoeshop.entity.StockToBeOrdered;
 import com.chris.enoch.shoeshop.entity.StockToBeOrderedShopA;
 import com.chris.enoch.shoeshop.entity.Supplier;
@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
 public class Sorting_Java8Streams {
 	private static final int MAX_STOCK_CAN_HOLD = 500;
 	private static final int MAX_NUM_OF_SHOE_TYPES = 10;
-	private static Stock stock = new Stock(new ArrayList<>());
+	private static CurrentStock stock = new CurrentStock(new ArrayList<>());
 
 	public static void main(String[] args) {	
 		//Init Stock				
@@ -119,8 +119,8 @@ public class Sorting_Java8Streams {
 		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000, GenderAdultChild.FEMALE, 1, Colour.BLACK, 38);
 		
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
-		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer, 400
-				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES, LocalDateTime.now());
+		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer
+				,LocalDateTime.now(), MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		
 		
 		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 50));

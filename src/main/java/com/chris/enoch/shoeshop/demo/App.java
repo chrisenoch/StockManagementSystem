@@ -11,7 +11,7 @@ import com.chris.enoch.shoeshop.entity.Colour;
 import com.chris.enoch.shoeshop.entity.GenderAdultChild;
 import com.chris.enoch.shoeshop.entity.Shoe;
 import com.chris.enoch.shoeshop.entity.ShoeType;
-import com.chris.enoch.shoeshop.entity.Stock;
+import com.chris.enoch.shoeshop.entity.CurrentStock;
 import com.chris.enoch.shoeshop.entity.StockToBeOrdered;
 import com.chris.enoch.shoeshop.entity.StockToBeOrderedShopA;
 import com.chris.enoch.shoeshop.entity.Supplier;
@@ -20,13 +20,11 @@ public class App {
 	public static void main(String[] args) {
 		
 		//Init Stock
-		Stock stock = new Stock(new ArrayList<>());
-		
+		CurrentStock currentStock = new CurrentStock(new ArrayList<>());	
 		final int MAX_STOCK_CAN_HOLD = 500;
 		final int MAX_NUM_OF_SHOE_TYPES = 10;
 		
 		//Init addresses
-		
 		Address nikeAddress = new Address(1, (short)14, "Paul Street", "Harbourne", "Birmingham"
 				, "England", "B62 0GF", "01214507656");
 		Address doctorMartinsAddress = new Address(12, (short)142, "Lavina Road", "Smethick"
@@ -54,11 +52,11 @@ public class App {
 		Shoe balletShoes = new Shoe(10,  10, "SomeBalletShoes", vansSupplier, ShoeType.DANCING, 8000, GenderAdultChild.FEMALE, 1, Colour.BLACK, 38);
 
 		List<Shoe> stockToBeOrdererd = new ArrayList<>();
-		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, stock, trainer, 400
-				, MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES, LocalDateTime.now());
+		StockToBeOrdered stockToBeOrdered = new StockToBeOrderedShopA (stockToBeOrdererd, currentStock, trainer
+				,LocalDateTime.now(), MAX_STOCK_CAN_HOLD, MAX_NUM_OF_SHOE_TYPES);
 		 
 		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 400));
-		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 120)); //Should fail
+		System.out.println(addAndGetFeedback(stockToBeOrdered, trainer, 120)); //SHOULD FAIL
 		System.out.println(addAndGetFeedback(stockToBeOrdered, flipFlops, 1));
 		System.out.println(addAndGetFeedback(stockToBeOrdered, hikingBoots, 2));
 		System.out.println(addAndGetFeedback(stockToBeOrdered, nikeAirtrainerShoe, 3));
