@@ -23,10 +23,10 @@ public class SQLDemo {
 			GET SHOE INFORMATION AND SUPPLIER ADDRESSES PER SHOE
 			
 			SELECT s.id, s.product_id, product_name, gender_adult_child, item_group_ref, price, s.type, colour_name, size, supplier.company_name
-			, address_line_1, address_line_2, city, country_region, county_state_region_province, postcode, telephone_number from 
-			shoe s inner join colour c on colour_id = c.id inner join size on size_id = size.id inner join supplier_product sp
-			on s.product_id = sp.product_id inner join supplier  on sp.supplier_id = supplier.id inner join supplier_address sa
-			on supplier.id = sa.supplier_id inner join address on address_id = address.id order by length(s.product_id), s.product_id
+			, address_line_1, address_line_2, city, country_region, county_state_region_province, postcode, telephone_number FROM 
+			shoe s INNER JOIN colour c on colour_id = c.id INNER JOIN size ON size_id = size.id INNER JOIN supplier_product sp
+			ON s.product_id = sp.product_id INNER JOIN supplier  ON sp.supplier_id = supplier.id INNER JOIN supplier_address sa
+			ON supplier.id = sa.supplier_id INNER JOIN address ON address_id = address.id ORDER BY length(s.product_id), s.product_id
 			
 			
 	 *STOCK

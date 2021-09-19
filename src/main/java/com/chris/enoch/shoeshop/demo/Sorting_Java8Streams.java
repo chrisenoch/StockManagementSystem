@@ -52,7 +52,7 @@ public class Sorting_Java8Streams {
 		Map<Supplier, Optional<Shoe>> mostExpensiveShoeBySupplier
 		= stockToBeOrderedList.stream().collect(groupingBy(Shoe::getSupplier, maxBy
 				(comparing(Shoe::getPriceInCents))));	
-	
+		
 		
 		//Most expensive shoe per supplier - no optional	
 		Map<Supplier, Shoe> mostExpensiveShoeBySupplierNoOptional

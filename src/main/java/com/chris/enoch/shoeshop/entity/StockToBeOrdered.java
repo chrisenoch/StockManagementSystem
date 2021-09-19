@@ -65,7 +65,7 @@ public abstract class StockToBeOrdered {
 	 *Adds stock if no error messages are present or else sets appropriate error messages.
 	 * @return OrderStockFeedback object detailing the success status and any relevant error messages in case of failure.
 	 */
-	public OrderStockFeedback addStockToBeOrdered() {
+	public final OrderStockFeedback addStockToBeOrdered() {
 		OrderStockFeedback orderStockFeedback = new OrderStockFeedback(new ArrayList<>(), true); //setStockOrderSuccesful to true initially 
 		
 				
